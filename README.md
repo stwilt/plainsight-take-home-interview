@@ -6,7 +6,7 @@ The purpose of this program is to aggregate user activities into a nested JSON f
 To run the script, first, make sure you're in your preferred [virtual environment](https://docs.python.org/3/tutorial/venv.html). Once you're all set up in a place where you're comfortable installing your dependencies, run:
 
 ```sh
-pip install requirements.txt
+pip install -r requirements.txt
 ```
 
 This will install [pola.rs](https://pola.rs/) for data munging and [fire](https://github.com/google/python-fire) for CLI. 
