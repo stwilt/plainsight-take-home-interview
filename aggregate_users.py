@@ -42,15 +42,10 @@ def dump_user_aggregates(activity_table_path="user_activities.csv"):
         )
         .rename(agg_names)
     )
-    msg = None
     try:
         aggregates = aggregates.collect()
-    except pl.ComputeError as err:
-        msg = ".\n".join(str(err).split("\n\n")[:2])
     except Exception as err:
-        msg = str(err)
-    if msg is not None:
-        raise RuntimeError(f"parse {activity_table_path}: {msg}")
+        raise RuntimeError(f"parse {activity_table_path}: ") from err
     # The resulting table is in row-wise format with user ID as a record key: we
     # need these to be the dict keys in the output, instead
     uids = aggregates.select("User ID").to_series()
